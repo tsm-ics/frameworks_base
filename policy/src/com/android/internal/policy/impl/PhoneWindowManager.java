@@ -133,6 +133,7 @@ import android.view.KeyCharacterMap.FallbackAction;
 import android.view.accessibility.AccessibilityEvent;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
+import android.widget.Toast;
 import android.media.IAudioService;
 import android.media.AudioManager;
 
@@ -660,6 +661,37 @@ public class PhoneWindowManager implements WindowManagerPolicy {
         }
     };
 
+<<<<<<< HEAD
+=======
+    Runnable mBackLongPress = new Runnable() {
+        public void run() {
+            try {
+                performHapticFeedbackLw(null, HapticFeedbackConstants.LONG_PRESS, false);
+                IActivityManager mgr = ActivityManagerNative.getDefault();
+                List<RunningAppProcessInfo> apps = mgr.getRunningAppProcesses();
+                for (RunningAppProcessInfo appInfo : apps) {
+                    int uid = appInfo.uid;
+                    // Make sure it's a foreground user application (not system,
+                    // root, phone, etc.)
+                    if (uid >= Process.FIRST_APPLICATION_UID && uid <= Process.LAST_APPLICATION_UID
+                            && appInfo.importance == RunningAppProcessInfo.IMPORTANCE_FOREGROUND) {
+                        Toast.makeText(mContext, R.string.app_killed_message, Toast.LENGTH_SHORT).show();
+                        // Kill the entire pid
+                        if (appInfo.pkgList!=null && (apps.size() > 0)){
+                            mgr.forceStopPackage(appInfo.pkgList[0]);
+                        }else{
+                            Process.killProcess(appInfo.pid);
+                        }
+                        break;
+                    }
+                }
+            } catch (RemoteException remoteException) {
+                // Do nothing; just let it go.
+            }
+        }
+    };
+
+>>>>>>> 6188d5c... Merge "Long press to kill" into ics
     void showGlobalActionsDialog() {
         if (mGlobalActions == null) {
             mGlobalActions = new GlobalActions(mContext);
@@ -1628,6 +1660,16 @@ public class PhoneWindowManager implements WindowManagerPolicy {
                 showOrHideRecentAppsDialog(RECENT_APPS_BEHAVIOR_SHOW_OR_DISMISS);
             }
             return -1;
+<<<<<<< HEAD
+=======
+        } else if (keyCode == KeyEvent.KEYCODE_BACK) {
+            if (Settings.Secure.getInt(mContext.getContentResolver(),
+                    Settings.Secure.KILL_APP_LONGPRESS_BACK, 0) == 1) {
+                if (down && repeatCount == 0) {
+                    mHandler.postDelayed(mBackLongPress, ViewConfiguration.getGlobalActionKeyTimeout());
+                }
+            }
+>>>>>>> 6188d5c... Merge "Long press to kill" into ics
         }
 
         // Shortcuts are invoked through Search+key, so intercept those here
