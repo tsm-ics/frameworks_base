@@ -750,8 +750,6 @@ void AudioSystem::AudioPolicyServiceClient::binderDied(const wp<IBinder>& who) {
     LOGW("AudioPolicyService server died!");
 }
 
-<<<<<<< HEAD
-=======
 #ifdef USES_AUDIO_LEGACY
 extern "C" uint32_t _ZN7android11AudioSystem8popCountEj(uint32_t u)
 {
@@ -832,6 +830,5 @@ extern "C" bool _ZN7android11AudioSystem17isSeparatedStreamE19audio_stream_type_
 }
 #endif // YAMAHAPLAYER
 
->>>>>>> b27b081... Merge "samsung: add support for tvout and yamahaplayer services" into ics
 }; // namespace android
 
