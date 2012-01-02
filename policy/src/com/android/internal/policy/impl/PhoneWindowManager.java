@@ -661,8 +661,6 @@ public class PhoneWindowManager implements WindowManagerPolicy {
         }
     };
 
-<<<<<<< HEAD
-=======
     Runnable mBackLongPress = new Runnable() {
         public void run() {
             try {
@@ -691,7 +689,6 @@ public class PhoneWindowManager implements WindowManagerPolicy {
         }
     };
 
->>>>>>> 6188d5c... Merge "Long press to kill" into ics
     void showGlobalActionsDialog() {
         if (mGlobalActions == null) {
             mGlobalActions = new GlobalActions(mContext);
@@ -1660,8 +1657,6 @@ public class PhoneWindowManager implements WindowManagerPolicy {
                 showOrHideRecentAppsDialog(RECENT_APPS_BEHAVIOR_SHOW_OR_DISMISS);
             }
             return -1;
-<<<<<<< HEAD
-=======
         } else if (keyCode == KeyEvent.KEYCODE_BACK) {
             if (Settings.Secure.getInt(mContext.getContentResolver(),
                     Settings.Secure.KILL_APP_LONGPRESS_BACK, 0) == 1) {
@@ -1669,7 +1664,6 @@ public class PhoneWindowManager implements WindowManagerPolicy {
                     mHandler.postDelayed(mBackLongPress, ViewConfiguration.getGlobalActionKeyTimeout());
                 }
             }
->>>>>>> 6188d5c... Merge "Long press to kill" into ics
         }
 
         // Shortcuts are invoked through Search+key, so intercept those here
