@@ -498,11 +498,7 @@ public class WifiService extends IWifiManager.Stub {
             }
         } else {
             if (airplane) {
-<<<<<<< HEAD
-                mWifiState.set(WIFI_DISABLED_AIRPLANE_ON);
-=======
                 mPersistWifiState.set(WIFI_DISABLED_AIRPLANE_ON);
->>>>>>> bec9694... Merge branch 'ics-mr1' of https://android.googlesource.com/platform/frameworks/base into aosp
             } else {
                 mPersistWifiState.set(WIFI_DISABLED);
             }

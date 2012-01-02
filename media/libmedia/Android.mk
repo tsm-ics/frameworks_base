@@ -46,6 +46,23 @@ LOCAL_SRC_FILES:= \
     MemoryLeakTrackUtil.cpp \
     fixedfft.cpp.arm
 
+<<<<<<< HEAD
+=======
+ifeq ($(BOARD_USES_AUDIO_LEGACY),true)
+    LOCAL_SRC_FILES+= \
+        AudioParameter.cpp
+
+    LOCAL_CFLAGS += -DUSES_AUDIO_LEGACY
+    ifeq ($(BOARD_USE_KINETO_COMPATIBILITY),true)
+        LOCAL_CFLAGS += -DUSE_KINETO_COMPATIBILITY
+    endif
+endif
+
+ifeq ($(BOARD_USE_YAMAHAPLAYER),true)
+    LOCAL_CFLAGS += -DYAMAHAPLAYER
+endif
+
+>>>>>>> b27b081... Merge "samsung: add support for tvout and yamahaplayer services" into ics
 LOCAL_SHARED_LIBRARIES := \
 	libui libcutils libutils libbinder libsonivox libicuuc libexpat \
         libcamera_client libstagefright_foundation \
