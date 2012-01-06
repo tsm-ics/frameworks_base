@@ -18,7 +18,7 @@ endif
 
 ifeq ($(BOARD_USE_SECTVOUT),true)
     LOCAL_CFLAGS += -DSECTVOUT
-	LOCAL_SHARED_LIBRARIES += libTVOut
+	#LOCAL_SHARED_LIBRARIES += libTVOut  ############# reenable when source is available for now use prebuilt lib
 endif
 
 base := $(LOCAL_PATH)/../..

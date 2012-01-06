@@ -54,7 +54,7 @@ int main(int argc, char** argv)
     yamaha::media::InstantiateService();
 #endif
 #ifdef SECTVOUT
-    SecTVOutService::instantiate();
+    //SecTVOutService::instantiate();
 #endif
     AudioFlinger::instantiate();
     MediaPlayerService::instantiate();
